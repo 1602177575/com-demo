@@ -1,0 +1,16 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: cloud-feign-customer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ""
+#负载均衡的配置
+# 服务端不涉及远程可以不需要配置
+feign:
+  # 使用okhttp作为底层通信框架
+  okhttp:
+    enabled: true

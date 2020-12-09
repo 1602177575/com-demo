@@ -1,0 +1,9 @@
+server:
+  port: 8869
+
+spring:
+  application:
+    name: smart-sms
+  profiles:
+    include: redis
+    active: @profile.active@

@@ -1,0 +1,7 @@
+server:
+  port: 8868
+
+spring:
+  profiles:
+    active: "@profile.active@"
+    include: db

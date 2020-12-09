@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.demo</groupId>
+    <artifactId>com-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>smart-common</module>
+        <module>smart-business</module>
+        <module>cloud-eureka-example</module>
+        <module>cloud-alibaba-feign</module>
+    </modules>
+    <name>com.demo.SpringCloud</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <aliyun-sms.version>4.5.3</aliyun-sms.version>
+        <redissson-starter.version>3.11.6</redissson-starter.version>
+
+        <spring-cloud-alibaba-nacos>2.2.1.RELEASE</spring-cloud-alibaba-nacos>
+        <spring-cloud-openfeign>2.2.2.RELEASE</spring-cloud-openfeign>
+<!--        自定义依赖-->
+        <smart-db>0.0.1-SNAPSHOT</smart-db>
+        <smart-redis>0.0.1-SNAPSHOT</smart-redis>
+        <smart-commons>0.0.1-SNAPSHOT</smart-commons>
+        <smart-mq>0.0.1-SNAPSHOT</smart-mq>
+
+<!--        cloud-->
+        <spring-boot.version>2.1.17.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+<!--        导包-->
+<!--        工具-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-sms.version}</version>
+            </dependency>
+
+            <!--        自定义包内功能部分依赖-->
+<!--            数据库-->
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-db</artifactId>
+                <version>${smart-db}</version>
+            </dependency>
+<!--            redis-->
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-redis</artifactId>
+                <version>${smart-redis}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-commons</artifactId>
+                <version>${smart-commons}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-rocketmq</artifactId>
+                <version>${smart-mq}</version>
+            </dependency>
+
+            <!--        spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redissson-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring-cloud-alibaba-nacos}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-openfeign}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.active>dev</profile.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.active>test</profile.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <profile.active>pro</profile.active>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</project>

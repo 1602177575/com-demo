@@ -1,0 +1,16 @@
+server:
+  port: 8090
+  servlet:
+    context-path: "/api"
+spring:
+  application:
+    name: cloud-feign-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ""
+#负载均衡的配置
+# 服务端不涉及远程可以不需要配置
+
+
+

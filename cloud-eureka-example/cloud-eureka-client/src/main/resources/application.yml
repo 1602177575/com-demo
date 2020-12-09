@@ -1,0 +1,16 @@
+server:
+  port: 8781
+
+spring:
+  application:
+    name: eureka-client
+
+eureka:
+  instance:
+    #再eurekaService 中的服务器地址显示
+    prefer-ip-address: true
+  client:
+    service-url:
+      # 注册中心的注册地址
+      defaultZone: "http://admin:admin@localhost:8791/eureka/"
+

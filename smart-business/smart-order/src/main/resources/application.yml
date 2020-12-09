@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: @profile.active@
+    include: db
+  application:
+    name: order-server
+  redis:
+    rediss
+
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false

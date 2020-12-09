@@ -1,0 +1,16 @@
+server:
+  port: 8717
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://xxxx:3306/business_order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: "xxxx:8848"
+
+
+
