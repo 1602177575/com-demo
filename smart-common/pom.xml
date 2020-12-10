@@ -17,6 +17,7 @@
         <module>smart-db</module>
         <module>smart-commons</module>
         <module>smart-lock</module>
+        <module>smart-shiro</module>
     </modules>
 
 </project>
