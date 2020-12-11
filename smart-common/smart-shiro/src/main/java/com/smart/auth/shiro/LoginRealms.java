@@ -3,8 +3,9 @@ package com.smart.auth.shiro;
 
 import com.smart.auth.dto.MemberDto;
 import com.smart.auth.dto.RoleDto;
-import com.smart.auth.mapper.MemberRoleRelationMapper;
+import com.smart.auth.mapper.MemberRoleMapper;
 import com.smart.auth.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -23,10 +24,10 @@ import java.util.Set;
  */
 
 
-
+@Slf4j
 public class LoginRealms extends AuthorizingRealm {
     @Resource
-    MemberRoleRelationMapper memberRoleRelationMapper;
+    MemberRoleMapper memberRoleMapper;
     @Resource
     UserService userService;
     /**
@@ -41,7 +42,7 @@ public class LoginRealms extends AuthorizingRealm {
         //获取当前登录的角色信息
         MemberDto memberDto = (MemberDto) principalCollection.getPrimaryPrincipal();
         //从数据库中查询角色的权限
-        List<RoleDto> roleDtoList = memberRoleRelationMapper.selectRoleById(memberDto.getMid());
+        List<RoleDto> roleDtoList = memberRoleMapper.selectRolesById(memberDto.getId());
         Set<String> roleSet= new HashSet<>();
         Set<String> permissionSet = new HashSet<>();
         //获取用户的权限组
@@ -58,7 +59,7 @@ public class LoginRealms extends AuthorizingRealm {
     }
 
     /**
-     * 主要是对用户进行验证
+     * 主要是对用户进行认证 验证
      * 调用currUser.login(token)方法时会调用doGetAuthenticationInfo方法。
      * @param authenticationToken
      * @return
@@ -73,9 +74,11 @@ public class LoginRealms extends AuthorizingRealm {
         MemberDto memberDto = userService.selectByName(username);
         //进行逻辑判断 权限判断
         if(StringUtils.isEmpty(memberDto)){
+            log.info("账号不存在");
             throw new UnknownAccountException("账号不存在");
         }
         if(memberDto.getLocked()){
+            log.info("账号被锁定");
             throw new LockedAccountException("账号被锁定");
         }
         /**

@@ -19,7 +19,7 @@ create table member
         unique (username),
     constraint uk_u_phone
         unique (phone)
-);
+)comment '用户表';
 
 create table member_role_relation
 (
@@ -28,7 +28,7 @@ create table member_role_relation
     member_id   int                                null,
     role_id     int                                null,
     create_date datetime default CURRENT_TIMESTAMP null
-);
+)comment '用户表';
 
 create table permission
 (
@@ -40,7 +40,7 @@ create table permission
     is_del      int      default 0                 not null comment '是否删除 0 表示未删除  1 表示删除',
     constraint per_name
         unique (per_name)
-);
+)comment '权限表';
 
 create table role
 (
@@ -50,7 +50,7 @@ create table role
     create_date datetime default CURRENT_TIMESTAMP not null comment '创建日期',
     role_desc   varchar(255)                       null comment '角色说明',
     is_del      int      default 0                 not null comment '是否删除 0 表示未删除  1 表示删除'
-);
+)comment '管理者权限表';
 
 create table role_permission_relation
 (
@@ -58,5 +58,5 @@ create table role_permission_relation
         primary key,
     per_id  int null,
     role_id int null
-);
+)comment '权限表';
 

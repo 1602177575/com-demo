@@ -4,13 +4,13 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://xxxx:3306/business_order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
       username: root
-      password: root
+      password: admin
   cloud:
     nacos:
       discovery:
-        server-addr: "xxxx:8848"
+        server-addr: "114.55.167.88:8848"
 
 
 

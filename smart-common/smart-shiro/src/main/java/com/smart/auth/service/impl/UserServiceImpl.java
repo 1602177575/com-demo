@@ -16,9 +16,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     MemberMapper memberMapper;
     @Override
-    public MemberDto selectByName(String name) {
+    public MemberDto selectByName(String username) {
         QueryWrapper qw=new QueryWrapper();
-        qw.eq(Member.COL_USERNAME,name);
+        qw.eq(Member.COL_USERNAME,username);
         Member member = memberMapper.selectOne(qw);
         MemberDto dto = new MemberDto();
         BeanUtils.copyProperties(member,dto);

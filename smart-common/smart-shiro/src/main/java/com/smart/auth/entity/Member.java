@@ -14,7 +14,7 @@ public class Member {
      * 用户Id
      */
     @TableId(value = "mid", type = IdType.AUTO)
-    private Integer mid;
+    private Integer id;
 
     /**
      * 用户名

@@ -7,3 +7,6 @@ spring:
   application:
     name: shiro-servser
 
+shiro-redis:
+  redis-manager:
+    host: 139.159.144.130:6379
