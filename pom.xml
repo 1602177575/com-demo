@@ -31,7 +31,7 @@
         <smart-mq>0.0.1-SNAPSHOT</smart-mq>
 
 <!--        cloud-->
-        <spring-boot.version>2.1.17.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.11.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
 
@@ -112,6 +112,18 @@
                 <groupId>com.demo</groupId>
                 <artifactId>smart-rocketmq</artifactId>
                 <version>${smart-mq}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-duboo</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-dubbo-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
             <!--        spring cloud-->

@@ -16,6 +16,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getOrders() {
         String test = producerService.test(1);
-        return null;
+        return test;
     }
 }

@@ -1,0 +1,10 @@
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://114.55.167.88:8848
+
+  cloud:
+    #需要订阅的生产者名字
+    subscribed-services: "alipay-producer-m"

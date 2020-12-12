@@ -1,0 +1,14 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: mq-producer
+
+rocketmq:
+  name-server: 114.55.167.88:9876
+  #阿里云rocketmq连接地址
+  producer:
+    group: hello-rocketmq
+  topic: hello-topic
+

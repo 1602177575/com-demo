@@ -1,0 +1,13 @@
+#生产者 提供者
+dubbo:
+  scan:
+    #扫描暴漏供消费者使用的接口 , 隔开
+    base-packages: com.smart.alipay.servicer.impl
+
+#协议配置
+  protocol:
+    name: dubbo
+    #表示自增扫描从20880开始
+    port: -1
+  registry:
+    address: nacos://114.55.167.88:8848
