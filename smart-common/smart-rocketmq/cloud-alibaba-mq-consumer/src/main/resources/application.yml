@@ -7,7 +7,8 @@ spring:
 
   #注册到mq服务器上
 
+
 rocketmq:
-  name-server: 114.55.167.88:9876
+  name-server: 8.135.7.204:9876
   producer:
     group: hello-rocketmq

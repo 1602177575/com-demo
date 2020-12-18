@@ -9,8 +9,8 @@
     <modules>
         <module>smart-common</module>
         <module>smart-business</module>
-        <module>cloud-eureka-example</module>
         <module>cloud-alibaba-feign</module>
+        <module>smart-gateway</module>
     </modules>
     <name>com.demo.SpringCloud</name>
     <description>Demo project for Spring Boot</description>
@@ -63,17 +63,21 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
 
 
     </dependencies>
 
     <dependencyManagement>
+
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                    <version>2.2.11.RELEASE</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

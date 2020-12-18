@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
  * 权限注解
  * 基于角色的注解
  * 基于权限的注解
+ * RequiresRoles 要求角色
+ * RequiresPermissions 请求权限
+ * @author mtl
  */
 @RestController
 @RequestMapping("/admin")
@@ -23,8 +26,14 @@ public class AdminController {
     }
 
     @GetMapping("/per")
-    @RequiresPermissions ({"/order/list","/admin"})
+    @RequiresRoles ({"/admin","/order/list"})
     public String per() {
         return "需要admin权限才能访问";
+    }
+
+    @GetMapping("/root")
+    @RequiresPermissions({"/admin","/order"})
+    public String root(){
+        return "root权限";
     }
 }

@@ -38,7 +38,6 @@ public class LoginController {
             log.info("系统异常");
             throw new ServiceException(StatusCode.SERVER_ERROR);
         }
-
         return ResponseResult.success(SecurityUtils.getSubject().getSession().getId().toString());
 
     }

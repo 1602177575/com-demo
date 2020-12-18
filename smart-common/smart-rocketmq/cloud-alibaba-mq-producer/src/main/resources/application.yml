@@ -4,9 +4,13 @@ server:
 spring:
   application:
     name: mq-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.55.167.88:8848
 
 rocketmq:
-  name-server: 114.55.167.88:9876
+  name-server: 8.135.7.204:9876
   #阿里云rocketmq连接地址
   producer:
     group: hello-rocketmq

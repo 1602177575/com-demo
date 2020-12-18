@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: ""
+        server-addr: "114.55.167.88:8848"
 #负载均衡的配置
 # 服务端不涉及远程可以不需要配置
 feign:

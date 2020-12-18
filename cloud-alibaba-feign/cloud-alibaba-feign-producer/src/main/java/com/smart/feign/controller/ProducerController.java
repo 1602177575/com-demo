@@ -11,7 +11,7 @@ public class ProducerController {
     @Value("${server.port}")
     private int port;
 
-    @GetMapping("/")
+    @GetMapping("/fin")
     public String test(int uid) {
         return port + "";
     }

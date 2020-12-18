@@ -3,6 +3,7 @@ package com.smart.commons.exception;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("ALL")
 @Data
 @NoArgsConstructor
 public class BaseException extends RuntimeException {
