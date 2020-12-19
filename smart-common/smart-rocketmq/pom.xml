@@ -15,6 +15,15 @@
         <module>cloud-alibaba-mq-consumer</module>
         <module>cloud-alibaba-mq-producer</module>
     </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+    </dependencies>
          <dependencyManagement>
              <dependencies>
                  <dependency>
@@ -29,6 +38,8 @@
                      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
                      <version>2.1.5.RELEASE</version>
                  </dependency>
+
+
              </dependencies>
 
          </dependencyManagement>

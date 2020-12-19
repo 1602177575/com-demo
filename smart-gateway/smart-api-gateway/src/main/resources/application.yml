@@ -1,0 +1,31 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.55.167.88:8848
+
+    gateway:
+      routes:
+        # 路由器唯一标识
+        - id: user-route
+          # 将要代理的服务名称
+          uri: lb://user-server
+          order: 0
+          # 断言 满足则转发
+          predicates:
+            - Path=/api/user/**
+
+          #将第一个参数地址去除
+          filter:
+            - StripPrefix=1
+
+
+
+
+
