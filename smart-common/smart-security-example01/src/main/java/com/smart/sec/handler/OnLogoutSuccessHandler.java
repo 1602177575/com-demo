@@ -1,5 +1,6 @@
 package com.smart.sec.handler;
 
+import com.smart.sec.Response.R;
 import com.smart.sec.Response.ResponseResult;
 import com.smart.sec.utils.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class OnLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse resp, Authentication authentication) throws IOException, ServletException {
         log.info("去登陆界面");
-        responseUtils.responseToJson(resp, ResponseResult.success("请去登陆"));
+        responseUtils.responseToJson(resp, ResponseResult.success(R.NO_LOGIN));
 
     }
 }

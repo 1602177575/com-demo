@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>My SpringSecurity Plus</title>
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+
+        $(function (){
+            var stoken = Response.getResponseHeader('token');
+            console.log(stoken);
+        });
+    </script>
+</head>
+<!-- 结 构 代 码 -->
+<body>
+<h1>主页</h1>
+<p th:text="${username}"></p>
+<a th:href="@{/test}"/>
+
+<a href="/user/update">user update</a>
+<a href="/user/add">user add</a>
+<a href="/level/vip">vip</a>
+<a href="/list">list</a>
+
+<br>
+<a href="/logout">注销</a>
+</body>
+</html>

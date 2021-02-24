@@ -1,6 +1,7 @@
 package com.smart.sec.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smart.sec.Response.R;
 import com.smart.sec.Response.ResponseResult;
 import com.smart.sec.dto.UserDetailDto;
 import com.smart.sec.utils.CookieUtils;
@@ -56,7 +57,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         CookieUtils.setCookie(request,response,"authenticated",token,12000);
         //生成JWT
         //放入头文件
-        responseUtils.responseToJsonObj(response,objectMapper, ResponseResult.success(token));
+        responseUtils.responseToJsonObj(response,objectMapper, ResponseResult.success(R.SUCCESS));
 
     }
 }

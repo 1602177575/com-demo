@@ -17,6 +17,13 @@ public class ResponseResult<T> {
         return  responseResult;
     }
 
+    public static <T> ResponseResult<T> success(R r) {
+        ResponseResult<T> responseResult = new ResponseResult<>();
+        responseResult.setStatus(r.getStatus());
+        responseResult.setMsg(r.getMsg());
+        return  responseResult;
+    }
+
     public static <T> ResponseResult<T> error(R r){
         ResponseResult<T> result = new ResponseResult<>();
         result.setStatus(r.getStatus());

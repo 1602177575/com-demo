@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.sec.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.smart.sec.pojo.Menu">
+    <!--@mbg.generated-->
+    <!--@Table my_menu-->
+    <id column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="type" jdbcType="BOOLEAN" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    menu_id, parent_id, menu_name, icon, url, permission, sort, `type`, create_time, 
+    update_time
+  </sql>
+
+    <select id="findRolesByUserName" resultMap="BaseResultMap">
+        select m.* from
+                my_user u left join my_role_user ru on u.user_id=ru.user_id
+                          left join my_role_menu rm on rm.role_id=ru.role_id
+                          left join my_menu m on m.menu_id=rm.menu_id
+        where u.user_name=#{username}
+    </select>
+
+    <select id="findRoleByRoleName" resultType="String">
+        select M.permission from my_menu m left join my_role_menu rm on rm.menu_id=m.menu_id
+                                           left join my_role r on r.role_id=rm.role_id
+        where r.role_name=#{roleName}
+    </select>
+
+</mapper>

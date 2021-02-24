@@ -53,7 +53,7 @@ public class User {
     private String email;
 
     /**
-     * 状态 1 存在 0删除
+     * 状态
      */
     @TableField(value = "`status`")
     private Boolean status;

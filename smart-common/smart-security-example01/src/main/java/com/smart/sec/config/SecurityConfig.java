@@ -38,9 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     OnLogoutSuccessHandler onLogoutSuccessHandler;
 
 
-
-
-
     /**
      * Http
      * 登陆 登出  授权过滤器

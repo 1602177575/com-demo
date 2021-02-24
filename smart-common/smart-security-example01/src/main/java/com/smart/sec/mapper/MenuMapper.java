@@ -9,6 +9,10 @@ import java.util.Set;
 
 public interface MenuMapper extends BaseMapper<Menu> {
 
+    //角色名 获取权限菜单详情
     List<Menu> findRolesByUserName(@Param("username") String userName);
+
+    //角色名 获取权限菜单
+    List<String> findRoleByRoleName(@Param("roleName") String roleName);
 
 }

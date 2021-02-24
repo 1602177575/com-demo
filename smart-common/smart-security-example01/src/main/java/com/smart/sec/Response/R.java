@@ -13,6 +13,7 @@ public enum R {
     REGISTER_ERROR(4008,"用户名重复，注册失败，请重试"),
     KEY_ERROR(4009,"输入违规字符,请重试"),
     NO_PERMISSION(403,"无权访问"),
+    NO_LOGIN(403,"无权访问"),
 
     SERVER_ERROR(5000, "服务器错误");
 
