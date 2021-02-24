@@ -1,11 +1,10 @@
-package com.smart.security.mapper;
-
+package com.smart.sec.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.smart.security.entity.User;
+import com.smart.sec.pojo.User;
 
-/**
- * @author mtl
- */
+
+
 public interface UserMapper extends BaseMapper<User> {
+
 }
