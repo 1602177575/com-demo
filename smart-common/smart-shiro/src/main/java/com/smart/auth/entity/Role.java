@@ -7,43 +7,56 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;
 import lombok.Data;
 
+/**
+    * 角色表
+    */
 @Data
-@TableName(value = "`role`")
+@TableName(value = "tb_role")
 public class Role {
-    @TableId(value = "role_id", type = IdType.AUTO)
-    private Integer roleId;
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+
+    /**
+     * 父角色
+     */
+    @TableField(value = "parent_id")
+    private Long parentId;
 
     /**
      * 角色名称
      */
-    @TableField(value = "role_name")
-    private String roleName;
+    @TableField(value = "`name`")
+    private String name;
 
     /**
-     * 创建日期
+     * 角色英文名称
      */
-    @TableField(value = "create_date")
-    private Date createDate;
+    @TableField(value = "enname")
+    private String enname;
 
     /**
-     * 角色说明
+     * 备注
      */
-    @TableField(value = "role_desc")
-    private String roleDesc;
+    @TableField(value = "description")
+    private String description;
 
-    /**
-     * 是否删除 0 表示未删除  1 表示删除
-     */
-    @TableField(value = "is_del")
-    private Integer isDel;
+    @TableField(value = "created")
+    private Date created;
 
-    public static final String COL_ROLE_ID = "role_id";
+    @TableField(value = "updated")
+    private Date updated;
 
-    public static final String COL_ROLE_NAME = "role_name";
+    public static final String COL_ID = "id";
 
-    public static final String COL_CREATE_DATE = "create_date";
+    public static final String COL_PARENT_ID = "parent_id";
 
-    public static final String COL_ROLE_DESC = "role_desc";
+    public static final String COL_NAME = "name";
 
-    public static final String COL_IS_DEL = "is_del";
+    public static final String COL_ENNAME = "enname";
+
+    public static final String COL_DESCRIPTION = "description";
+
+    public static final String COL_CREATED = "created";
+
+    public static final String COL_UPDATED = "updated";
 }

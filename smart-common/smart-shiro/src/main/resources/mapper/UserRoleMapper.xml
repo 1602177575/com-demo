@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.auth.mapper.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.smart.auth.entity.UserRole">
+    <!--@mbg.generated-->
+    <!--@Table tb_user_role-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, role_id
+  </sql>
+
+<!--    根据用户表关联角色表关联权限表 获取用户权限URL-->
+    <select id="findUserPermission" resultType="String">
+        select tp.url from
+                tb_user u right join tb_user_role tur on u.id = tur.user_id
+                          right join tb_role tr on tur.role_id = tr.id
+                          right join tb_role_permission trm on tr.id=trm.role_id
+                          right join tb_permission tp on trm.permission_id=tp.id
+        where u.username=#{username}
+    </select>
+</mapper>

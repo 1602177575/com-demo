@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>smart-dubbo-producer</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>smart-dubbo-api</artifactId>
+        </dependency>
 
+
+    </dependencies>
 
 </project>

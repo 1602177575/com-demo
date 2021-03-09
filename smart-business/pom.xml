@@ -12,9 +12,7 @@
     <artifactId>smart-business</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>smart-member</module>
-        <module>smart-sms</module>
-        <module>smart-order</module>
+        <module>smart-coupons</module>
     </modules>
 
     <dependencyManagement>

@@ -1,5 +1,7 @@
 package com.smart.pay.service;
 
+import com.smart.pay.pojo.User;
+
 /**
  * 定义接口方法
  */
@@ -16,4 +18,8 @@ public interface AliPayService {
      * @return
      */
     String appPay();
+
+    User test();
+
+
 }

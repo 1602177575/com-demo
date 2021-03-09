@@ -1,6 +1,7 @@
 package com.smart.openpay.service.impl;
 
 import com.smart.openpay.service.TestService;
+import com.smart.pay.pojo.User;
 import com.smart.pay.service.AliPayService;
 import org.apache.dubbo.config.annotation.Reference;
 
@@ -17,5 +18,9 @@ public class TestServiceImpl implements TestService {
     public String test() {
         String s = aliPayService.webPay();
         return s+"测试";
+    }
+    @Override
+    public User test1() {
+        return aliPayService.test();
     }
 }

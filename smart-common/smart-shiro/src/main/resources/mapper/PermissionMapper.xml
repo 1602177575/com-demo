@@ -3,15 +3,18 @@
 <mapper namespace="com.smart.auth.mapper.PermissionMapper">
   <resultMap id="BaseResultMap" type="com.smart.auth.entity.Permission">
     <!--@mbg.generated-->
-    <!--@Table permission-->
-    <id column="per_id" jdbcType="INTEGER" property="perId" />
-    <result column="per_name" jdbcType="VARCHAR" property="perName" />
-    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="per_desc" jdbcType="VARCHAR" property="perDesc" />
-    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <!--@Table tb_permission-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    per_id, per_name, create_date, per_desc, is_del
+    id, parent_id, `name`, enname, url, description, created, updated
   </sql>
 </mapper>

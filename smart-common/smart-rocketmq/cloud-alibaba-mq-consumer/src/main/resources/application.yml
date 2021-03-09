@@ -7,7 +7,6 @@ spring:
 
   #注册到mq服务器上
 
-
 rocketmq:
   name-server: 8.135.7.204:9876
   producer:

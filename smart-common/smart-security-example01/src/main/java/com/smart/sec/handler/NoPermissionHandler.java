@@ -28,7 +28,6 @@ public class NoPermissionHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
-
         responseUtils.responseToJson(response, ResponseResult.error(R.NO_PERMISSION));
     }
 }

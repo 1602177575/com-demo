@@ -1,7 +1,7 @@
 dubbo:
   protocol:
     name: dubbo
-    port: -1
+    serialization: kryo
   registry:
     address: nacos://114.55.167.88:8848
 

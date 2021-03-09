@@ -17,7 +17,7 @@ public class ResponseUtils {
         response.getWriter().write(JSON.toJSONString(responseResult));
     }
 
-    public static void responseToJsonObj(HttpServletResponse response,ObjectMapper obj, ResponseResult<Object> responseResult) throws IOException {
+    public static void responseToJson(HttpServletResponse response,ObjectMapper obj, ResponseResult<Object> responseResult) throws IOException {
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(obj.writeValueAsString(responseResult));
     }

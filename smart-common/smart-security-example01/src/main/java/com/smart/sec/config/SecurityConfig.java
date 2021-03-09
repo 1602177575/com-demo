@@ -51,14 +51,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()//首页可以访问
+                //超级管理员权限
+
                 //需要特定权限
-                .antMatchers("/level/**").hasRole("VIP")
+                //.antMatchers("/level/**").hasRole("VIP")
                 //只要有 就行
-                .antMatchers("/user/**").hasAnyAuthority("ADMIN","VIP")
+//                .antMatchers("/user/**").hasAnyAuthority("USER","VIP","ADMIN")
                 //任何人都能访问这个请求 验证码的
                 .antMatchers("/captcha").permitAll()
                 //登陆即可访问
-                .antMatchers("/list").permitAll()
+//                .antMatchers("/list").permitAll()
                 //所有的请求
                 .anyRequest()
                 .authenticated();
@@ -97,15 +99,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable();
 
         //记住我功能
-        //http.rememberMe();
-
+        http.authorizeRequests()
+                .and()
+                .rememberMe();
 
         // 关闭跨域请求
         http.cors().disable();
         // 关闭跨域攻击
         http.csrf().disable();
-        // 5. session的配置
-        //http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // 5. session的配置  如果需要只创建一个
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
         //6. 禁用缓存
         http.headers().cacheControl().disable();
 
@@ -124,7 +127,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder())
                 .withUser("123")
                 .password(passwordEncoder().encode("123"))
-                .roles("VIP","userAdd");
+                .roles("USER");
+
                 //后续可以无限加 也可以从数据库中加载
                 //配置认证方法
                 auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());

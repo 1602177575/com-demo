@@ -1,11 +1,12 @@
 package com.smart.sec.handler;
 
+import cn.hutool.core.lang.UUID;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smart.sec.Response.R;
 import com.smart.sec.Response.ResponseResult;
-import com.smart.sec.dto.UserDetailDto;
 import com.smart.sec.utils.CookieUtils;
 import com.smart.sec.utils.JWTService;
+import com.smart.sec.utils.RedisUtils;
 import com.smart.sec.utils.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Random;
 
 
 /** 登陆成功返回
@@ -43,6 +45,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Resource
     ObjectMapper objectMapper;
 
+    @Resource
+    RedisUtils redisUtils;
+
+
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
@@ -54,10 +61,15 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String token = jwtService.generateToken(name);
         log.info("转换为token的用户name: "+jwtService.getUserNameFromToken(token));
         //设置到cookie
-        CookieUtils.setCookie(request,response,"authenticated",token,12000);
+        //CookieUtils.setCookie(request,response,"authenticated",token,12000);
+        //将key存到cookie中  用户带着这个key 就能去缓存中找到用户信息
+        //随机字段
+        String uuid="daskdhH231";
+        CookieUtils.setCookie(request,response,"user",uuid);
+        redisUtils.set(uuid,token);
         //生成JWT
         //放入头文件
-        responseUtils.responseToJsonObj(response,objectMapper, ResponseResult.success(R.SUCCESS));
+        responseUtils.responseToJson(response,objectMapper, ResponseResult.success(R.SUCCESS));
 
     }
 }

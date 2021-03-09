@@ -5,6 +5,9 @@ import org.redisson.api.RLock;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author mtl
+ */
 public interface LockRedisService {
     /**
      * 获取锁
@@ -28,6 +31,8 @@ public interface LockRedisService {
 
     /**
      * 加锁
+     * @return 锁
+     * @param key 锁名
      */
     RLock lock(String key);
 

@@ -60,3 +60,15 @@ create table role_permission_relation
     role_id int null
 )comment '权限表';
 
+create table coupons(
+                     id bigint(10) auto_increment primary key ,
+                     cp_name varchar(255) comment '优惠卷名称',
+                     cp_type varchar(128) comment '类型',
+                     cp_auto int(10)default 1 comment '默认手动发放1 自动发放2',
+                     cp_sum bigint(10) comment '发放的总量',
+                     cp_solo_quantity bigint(10) default 1 comment '每个人可以领取的数量 默认1',
+                     cp_condition bigint(10)default 0 comment '发放条件 全体 会员 1级会员 2级 默认全体 0 ',
+                     cp_time datetime comment '发放时间',
+                     cp_scope bigint(10) comment '有效范围'
+                 )comment '优惠券表'
+[2020-12-25 16:48:36] completed in 25 ms

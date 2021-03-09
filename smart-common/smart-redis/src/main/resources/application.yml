@@ -4,7 +4,7 @@ spring:
   redis:
     # 16 个数据  0-15
     database: 0
-    host: 139.159.144.130
+    host: 47.96.113.187
     port: 6379
     password: ""
     jedis:

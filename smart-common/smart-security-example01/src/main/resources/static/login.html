@@ -23,7 +23,7 @@
 		<input id="password" name="password" placeholder="密 码 : " type="password" value="123456"  hover class="layui-input" required lay-verify="password"/>
 	</div>
 	<div class="layui-form-item">
-		<input placeholder="验证码 : " name="captcha" id="captcha" hover class="code layui-input layui-input-inline"  required lay-verify="captcha" />
+		<input placeholder="验证码 : " name="captcha" id="captcha" autocomplete="off" hover class="code layui-input layui-input-inline"  required lay-verify="captcha" />
 		<img src="/captcha" class="captchaImage" id="captchaImage" onclick="this.src=this.src+'?'+Math.random()" title="点击刷新"/>
 	</div>
 	<div class="layui-form-item">

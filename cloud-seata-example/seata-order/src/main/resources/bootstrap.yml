@@ -1,0 +1,15 @@
+server:
+  port: 8889
+
+spring:
+  application:
+    name: order-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.55.167.88:8848
+      config:
+        server-addr: 114.55.167.88:8848
+

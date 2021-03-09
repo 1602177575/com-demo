@@ -18,24 +18,28 @@ public class VipController {
 
 
 
+    @RolesAllowed("USER")
     @RequestMapping("/list")
     public String userList(){
         log.info("用户列表权限");
         return "user/list";
     }
 
+    @RolesAllowed("USER")
     @RequestMapping("/user/add")
     public String userAdd(){
         log.info("添加用户权限");
         return "user/add";
     }
 
+    @RolesAllowed("USER")
     @RequestMapping("/user/update")
     public String userUp(){
         return "user/update";
     }
 
 
+    @RolesAllowed("VIP")
     @RequestMapping("/level/vip")
     public String vip(){
         return "level/vip";

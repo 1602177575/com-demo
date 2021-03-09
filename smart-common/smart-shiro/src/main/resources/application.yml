@@ -1,5 +1,5 @@
 server:
-  port: 8890
+  port: 8800
 
 spring:
   profiles:
@@ -9,4 +9,4 @@ spring:
 
 shiro-redis:
   redis-manager:
-    host: 139.159.144.130:6379
+    host: 47.96.113.187:6379

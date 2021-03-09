@@ -6,10 +6,13 @@ import org.redisson.api.RLock;
 import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
+/**
+ * @author mtl
+ */
 @Component
 public class RedisLockUtils {
     @Resource
-    Redisson redisson;
+   public Redisson redisson;
 
     public RLock getLock(String key){
         RLock rLock= redisson.getLock(key);

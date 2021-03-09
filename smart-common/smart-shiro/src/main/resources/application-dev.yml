@@ -5,7 +5,7 @@ spring:
     # 驱动包 8.0以上的配置
     # =========== druid 连接池配置===========
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/business_member?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/shiro?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
       # 初始化线程池数量  最大数  最小数
       username: root
       password: admin

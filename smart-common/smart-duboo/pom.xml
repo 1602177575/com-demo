@@ -22,14 +22,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.demo</groupId>
-            <artifactId>smart-dubbo-api</artifactId>
-        </dependency>
+
         <!--            注册中心被发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -53,11 +46,5 @@
 
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-
-        </dependencies>
-
-    </dependencyManagement>
 
 </project>

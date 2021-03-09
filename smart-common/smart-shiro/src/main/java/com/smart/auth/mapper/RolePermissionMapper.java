@@ -1,10 +1,7 @@
 package com.smart.auth.mapper;
 
-import com.smart.auth.dto.PermissionDto;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.smart.auth.entity.RolePermission;
 
-import java.util.List;
-
-public interface RolePermissionMapper {
-    List<PermissionDto> selectByRoleId(@Param("roleId") int roleId);
+public interface RolePermissionMapper extends BaseMapper<RolePermission> {
 }

@@ -2,6 +2,9 @@ package com.smart.commons.exception;
 
 import lombok.Getter;
 
+/**
+ * 状态码泛型
+ */
 @Getter
 public enum StatusCode {
     SUCCESS(200, "success"),

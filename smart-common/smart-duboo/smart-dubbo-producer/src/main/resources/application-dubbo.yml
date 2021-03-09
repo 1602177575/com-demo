@@ -2,7 +2,7 @@
 dubbo:
   scan:
     #扫描暴漏供消费者使用的接口 , 隔开
-    base-packages: com.smart.alipay.servicer.impl
+    base-packages: com.smart.alipay.feign
 
 #协议配置
   protocol:
@@ -11,3 +11,6 @@ dubbo:
     port: -1
   registry:
     address: nacos://114.55.167.88:8848
+spring:
+  main:
+    allow-bean-definition-overriding: true

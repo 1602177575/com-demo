@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.55.167.88:8848
+      config:
+        server-addr: 114.55.167.88:8848
+        file-extension: yaml
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    com.alibaba.nacos.client.*: WARN

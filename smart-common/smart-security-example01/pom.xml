@@ -113,6 +113,19 @@
             <version>1.2.51</version>
             <scope>compile</scope>
         </dependency>
+<!--        权限注解上的依赖-->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>jsr250-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!--        jedis 进行 redis 的连接-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <version>2.1.17.RELEASE</version>
+        </dependency>
+
 
     </dependencies>
 

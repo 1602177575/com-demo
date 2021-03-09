@@ -1,11 +1,6 @@
 server:
-  port: 8867
   servlet:
     context-path: /api
-
-spring:
-  application:
-    name: "dubbo-pay-customer-m"
   profiles:
     active: dubbo
 

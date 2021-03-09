@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author mtl
+ */
 @Service
 public class LockRedisServiceImpl implements LockRedisService {
 
@@ -18,6 +21,7 @@ public class LockRedisServiceImpl implements LockRedisService {
     public boolean tryLock(String key) {
         RLock lock = redisLockUtils.getLock(key);
         try {
+            //默认等待获取锁的等待时间  释放锁的时间（过期时间）  单位
             return lock.tryLock(-1,-1,null);
         } catch (InterruptedException e) {
             e.printStackTrace();

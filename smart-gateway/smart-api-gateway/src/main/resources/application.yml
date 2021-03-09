@@ -1,31 +1,42 @@
 server:
   port: 9000
-
 spring:
   application:
-    name: api-gateway
-
+    name: gateway_seckiil_server
   cloud:
     nacos:
       discovery:
         server-addr: 114.55.167.88:8848
-
     gateway:
       routes:
-        # 路由器唯一标识
+        # 给路由器名字 路由唯一标识
         - id: user-route
-          # 将要代理的服务名称
           uri: lb://user-server
+          #优先级 越小优先级越高
           order: 0
-          # 断言 满足则转发
+          # 断言 ，满足才会转发 用 =
           predicates:
-            - Path=/api/user/**
+            # 必须匹配路径
+            - Path=/index/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                # 令牌桶每秒填充速率
+                redis-rate-limiter.replenishRate: 3
+                # burstCapacity，令牌桶总容量。
+                redis-rate-limiter.burstCapacity: 3
+                # 使用sqel 表达式按名称引用Bean
+                key-resolver: "#{@ipKeyResolver}"
+        - id: user-route2
+          uri: lb://user-server
+          #优先级 越小优先级越高
+          order: 0
+          # 断言 ，满足才会转发 用 =
+          predicates:
+            # 必须匹配路径
+            - Path=/user/test
 
-          #将第一个参数地址去除
-          filter:
-            - StripPrefix=1
-
-
-
-
-
+  redis:
+    port: 6379
+    host: 47.96.113.187
+    database: 3

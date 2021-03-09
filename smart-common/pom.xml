@@ -19,8 +19,9 @@
         <module>smart-lock</module>
         <module>smart-shiro</module>
         <module>smart-duboo</module>
-        <module>smart-security</module>
         <module>smart-kinfe4j</module>
+        <module>smart-es</module>
+        <module>smart-security-example01</module>
     </modules>
 
 </project>

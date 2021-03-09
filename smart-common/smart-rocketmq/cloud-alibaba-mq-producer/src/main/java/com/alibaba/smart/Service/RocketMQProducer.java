@@ -20,8 +20,8 @@ public class RocketMQProducer{
     @Resource
     private RocketMQTemplate rocketMQTemplate;
 
-    @Value("${rocketmq.topic}")
-    private String topics;
+    //@Value("${rocketmq.topic}")
+    private String topics="tt";
 
     /**
      * 发送普通消息 异步
@@ -37,7 +37,6 @@ public class RocketMQProducer{
         /**
          * 同步消息
          */
-
         rocketMQTemplate.asyncSend(topics, msgBody, new SendCallback() {
             @Override
             public void onSuccess(org.apache.rocketmq.client.producer.SendResult sendResult) {
@@ -55,7 +54,7 @@ public class RocketMQProducer{
      * 发送异步消息 在SendCallback中可处理相关成功失败时的逻辑
      */
     public void sendAsyncMsg(String msgBody){
-        rocketMQTemplate.asyncSend("queue_test_topic", MessageBuilder.withPayload(msgBody).build(), new SendCallback() {
+        rocketMQTemplate.asyncSend("topics", MessageBuilder.withPayload(msgBody).build(), new SendCallback() {
 
             public void onSuccess(SendResult sendResult) {
                 // 处理消息发送成功逻辑

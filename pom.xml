@@ -11,6 +11,10 @@
         <module>smart-business</module>
         <module>cloud-alibaba-feign</module>
         <module>smart-gateway</module>
+        <module>cloud-seata-example</module>
+        <module>smart-quartz</module>
+        <module>smart-swager2</module>
+        <module>smart-log</module>
     </modules>
     <name>com.demo.SpringCloud</name>
     <description>Demo project for Spring Boot</description>
@@ -31,9 +35,10 @@
         <smart-mq>0.0.1-SNAPSHOT</smart-mq>
 
 <!--        cloud-->
+        <seata.version>1.4.0</seata.version>
         <spring-boot.version>2.2.11.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
 
     </properties>
 
@@ -154,6 +159,12 @@
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${spring-cloud-alibaba-nacos}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${spring-cloud-alibaba-nacos}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -192,13 +203,39 @@
                 <version>3.3.1</version>
             </dependency>
 
+
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>2.1.4</version>
+                <groupId>com.demo</groupId>
+                <artifactId>smart-lock</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
 
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-openfeign</artifactId>
+                <version>2.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign</groupId>
+                <artifactId>feign-okhttp</artifactId>
+                <version>10.7.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.seata</groupId>
+                        <artifactId>seata-spring-boot-starter</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>2.2.1.RELEASE</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>

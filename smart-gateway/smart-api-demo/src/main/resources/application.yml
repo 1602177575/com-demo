@@ -1,14 +1,5 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /api
-
-
+  port: 8888
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 114.55.167.88:8848
   application:
     name: user-server
-

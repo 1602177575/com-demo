@@ -7,43 +7,64 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;
 import lombok.Data;
 
+/**
+    * 权限表
+    */
 @Data
-@TableName(value = "permission")
+@TableName(value = "tb_permission")
 public class Permission {
-    @TableId(value = "per_id", type = IdType.AUTO)
-    private Integer perId;
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+
+    /**
+     * 父权限
+     */
+    @TableField(value = "parent_id")
+    private Long parentId;
 
     /**
      * 权限名称
      */
-    @TableField(value = "per_name")
-    private String perName;
+    @TableField(value = "`name`")
+    private String name;
 
     /**
-     * 创建日期
+     * 权限英文名称
      */
-    @TableField(value = "create_date")
-    private Date createDate;
+    @TableField(value = "enname")
+    private String enname;
 
     /**
-     * 权限说明
+     * 授权路径
      */
-    @TableField(value = "per_desc")
-    private String perDesc;
+    @TableField(value = "url")
+    private String url;
 
     /**
-     * 是否删除 0 表示未删除  1 表示删除
+     * 备注
      */
-    @TableField(value = "is_del")
-    private Integer isDel;
+    @TableField(value = "description")
+    private String description;
 
-    public static final String COL_PER_ID = "per_id";
+    @TableField(value = "created")
+    private Date created;
 
-    public static final String COL_PER_NAME = "per_name";
+    @TableField(value = "updated")
+    private Date updated;
 
-    public static final String COL_CREATE_DATE = "create_date";
+    public static final String COL_ID = "id";
 
-    public static final String COL_PER_DESC = "per_desc";
+    public static final String COL_PARENT_ID = "parent_id";
 
-    public static final String COL_IS_DEL = "is_del";
+    public static final String COL_NAME = "name";
+
+    public static final String COL_ENNAME = "enname";
+
+    public static final String COL_URL = "url";
+
+    public static final String COL_DESCRIPTION = "description";
+
+    public static final String COL_CREATED = "created";
+
+    public static final String COL_UPDATED = "updated";
 }

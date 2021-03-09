@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.db.mapper.CouponsMapper">
+  <resultMap id="BaseResultMap" type="com.smart.db.entity.Coupons">
+    <!--@mbg.generated-->
+    <!--@Table coupons-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cp_name" jdbcType="VARCHAR" property="cpName" />
+    <result column="cp_type" jdbcType="VARCHAR" property="cpType" />
+    <result column="cp_auto" jdbcType="INTEGER" property="cpAuto" />
+    <result column="cp_sum" jdbcType="BIGINT" property="cpSum" />
+    <result column="cp_solo_quantity" jdbcType="BIGINT" property="cpSoloQuantity" />
+    <result column="cp_condition" jdbcType="BIGINT" property="cpCondition" />
+    <result column="cp_time" jdbcType="TIMESTAMP" property="cpTime" />
+    <result column="cp_scope" jdbcType="BIGINT" property="cpScope" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cp_name, cp_type, cp_auto, cp_sum, cp_solo_quantity, cp_condition, cp_time, cp_scope
+  </sql>
+</mapper>

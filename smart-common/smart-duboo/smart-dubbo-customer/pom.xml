@@ -7,9 +7,24 @@
         <groupId>com.demo</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <dubbo-kryo.version>2.7.2</dubbo-kryo.version>
+    </properties>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>smart-dubbo-customer</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>smart-dubbo-api</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-serialization-kryo</artifactId>
+            <version>${dubbo-kryo.version}</version>
+        </dependency>
 
+    </dependencies>
 </project>

@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-// 开启注册中心注册
+// 开启注册中心注册  开启远程通信feign
 @EnableDiscoveryClient
-// 开启远程通信feign
 @EnableFeignClients
 @SpringBootApplication
 public class CustomerApp {

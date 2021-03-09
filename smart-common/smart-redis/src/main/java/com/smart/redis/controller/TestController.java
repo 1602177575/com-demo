@@ -2,21 +2,26 @@ package com.smart.redis.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.smart.redis.service.RedisService;
-import javafx.scene.chart.PieChart;
+
+import com.smart.redis.utils.RedisUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author mtl
+ */
 @RestController
 public class TestController {
 
     @Resource
-    RedisService redisService;
+    RedisUtils redisService;
+
 
     @GetMapping("/")
     String test(){
@@ -44,6 +49,7 @@ public class TestController {
         Boolean expire = redisService.expireAt(key,data);
         System.out.println(expire);
     }
+
 
 
 }

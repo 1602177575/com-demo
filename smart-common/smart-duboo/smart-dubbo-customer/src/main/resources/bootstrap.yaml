@@ -1,0 +1,16 @@
+server:
+  port: 8867
+
+spring:
+  cloud:
+    config:
+    nacos:
+      config:
+        server-addr: "114.55.167.88:8848"
+        file-extension: yaml
+  application:
+    name: "pay-customer-m"
+
+feign:
+  okhttp:
+    enabled: true
