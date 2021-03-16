@@ -30,38 +30,21 @@ import java.io.IOException;
 @Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-
-    @Resource
-    RedisUtils redisUtils;
-    @Resource
-    JWTService jwtService;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
         log.info("过滤器");
-        if(SecurityContextHolder.getContext().getAuthentication()!=null){
-
+        if(SecurityContextHolder.getContext().getAuthentication()!=null) {
             String requestURI = request.getRequestURI();
             String remoteAddr = request.getRemoteAddr();
             String method = request.getMethod();
-            log.info("当前URL："+requestURI);
-            log.info("请求地址："+remoteAddr);
-            log.info("请求方法："+method);
-            String uuid = CookieUtils.getCookieValue(request, "user");
-            if(uuid!=null){
-                String token = (String) redisUtils.get(uuid);
-                String username = jwtService.getUserNameFromToken(token);
-                log.info("当前用户名"+username);
-            }else {
-                log.info("未登录");
-            }
+            log.info("当前URL：" + requestURI);
+            log.info("请求地址：" + remoteAddr);
+            log.info("请求方法：" + method);
+            log.info("当前拦截器权限"+SecurityContextHolder.getContext().getAuthentication().getDetails());
 
-        }else{
-            ResponseUtils.responseToJson(response,ResponseResult.error("滚去登陆"));
         }
-        response.reset();
         chain.doFilter(request, response);
      }
     }

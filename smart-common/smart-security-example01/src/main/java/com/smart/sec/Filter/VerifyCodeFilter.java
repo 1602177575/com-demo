@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * 验证码校验过滤器
+ */
 @Component
 public class VerifyCodeFilter extends OncePerRequestFilter {
     private String defaultFilterProcessUrl = "/login";

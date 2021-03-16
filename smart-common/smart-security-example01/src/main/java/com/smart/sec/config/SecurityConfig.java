@@ -7,8 +7,12 @@ import com.smart.sec.handler.NoPermissionHandler;
 import com.smart.sec.handler.OnLogoutSuccessHandler;
 import com.smart.sec.sevice.impl.CustomerUserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,7 +27,9 @@ import javax.annotation.Resource;
 
 
 @EnableWebSecurity
-@Component
+@Configuration
+//开启三种权限控制注解
+@EnableGlobalMethodSecurity(prePostEnabled  = true,securedEnabled = true,jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
@@ -52,11 +58,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()//首页可以访问
                 //超级管理员权限
-
+                //.antMatchers("/level/vip").permitAll()
                 //需要特定权限
                 //.antMatchers("/level/**").hasRole("VIP")
                 //只要有 就行
-//                .antMatchers("/user/**").hasAnyAuthority("USER","VIP","ADMIN")
+                //.antMatchers("/user/**").hasAnyAuthority("USER","VIP","ADMIN")
                 //任何人都能访问这个请求 验证码的
                 .antMatchers("/captcha").permitAll()
                 //登陆即可访问
@@ -76,9 +82,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //登陆成功的处理器
                 .successHandler(loginSuccessHandler)
                 //登陆失败的处理器
-                 .failureHandler(loginErroHandler)
+                .failureHandler(loginErroHandler)
                 //和表单登陆相关的统统直接通过
-                 .permitAll();
+                .permitAll();
 
         http.exceptionHandling()
                 //无权访问处理
@@ -90,7 +96,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //如果需要登出后的操作可以配置
                 .logoutSuccessHandler(onLogoutSuccessHandler)
                 //退出后清空cookie
-                .deleteCookies("authenticated","JSESSIONID","remember-me")
+                .deleteCookies("authenticated", "JSESSIONID", "remember-me")
                 .permitAll()
                 .and()
                 .httpBasic()
@@ -117,6 +123,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 认证
      * 可以从内存 也可以从数据库
+     *
      * @param auth
      * @throws Exception
      */
@@ -129,9 +136,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder().encode("123"))
                 .roles("USER");
 
-                //后续可以无限加 也可以从数据库中加载
-                //配置认证方法
-                auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        //后续可以无限加 也可以从数据库中加载
+        //配置认证方法
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
 
@@ -144,31 +151,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/PearAdmin/**",
                         "/component/**",
                         "/admin/**",
+                        "/static/**",
+                        "/templates/**",
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
                         "/swagger-ui.html",
                         "/webjars/**",
                         "/v2/**",
-                        "/druid/**","/test/**");
+                        "/druid/**",
+                        "/test/**");
     }
+
 
     /**
      * 密码加密方法
+     *
      * @return
      */
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
     /**
      * 验证对象实现类
+     *
      * @return
      */
     @Bean("UserDetailsService")
-   public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new CustomerUserDetailsServiceImpl();
-   }
+    }
+
 }

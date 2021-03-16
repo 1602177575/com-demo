@@ -22,6 +22,7 @@
         <module>smart-kinfe4j</module>
         <module>smart-es</module>
         <module>smart-security-example01</module>
+        <module>smart-elasticsearch</module>
     </modules>
 
 </project>

@@ -1,8 +1,0 @@
-server:
-  port: 8989
-
-spring:
-  elasticsearch:
-    rest:
-      uris: 8.135.7.204:9200
-

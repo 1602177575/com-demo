@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 返回结果 JSON封装
+ */
 @Component
 public class ResponseUtils {
 

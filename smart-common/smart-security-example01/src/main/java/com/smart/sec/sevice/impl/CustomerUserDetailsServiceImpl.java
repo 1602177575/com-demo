@@ -48,7 +48,7 @@ public class CustomerUserDetailsServiceImpl implements UserDetailsService {
 
         String password = userService.findUserByName(username).getPassword();
 
-        //获取角色名
+        //根据用户名 获取角色名
         String roleName = roleMapper.findRoleByUserName(username);
         List<String> menuList = selectRole(roleName);
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();

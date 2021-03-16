@@ -41,7 +41,7 @@ public class IndexService {
     public Boolean addListener(String keyword) throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
         bulkRequest.timeout("10s");
-        List<Content> jdHtml = HtmlUtils.getJDHtml(keyword);
+        List<Content> jdHtml = HtmlUtils.getJDHtml(keyword,2);
         //将数据遍历存入
         for (int i = 0; i < jdHtml.size(); i++) {
             bulkRequest.add(new IndexRequest("jd_goods")

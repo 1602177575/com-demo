@@ -45,8 +45,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Resource
     ObjectMapper objectMapper;
 
-    @Resource
-    RedisUtils redisUtils;
 
 
 
@@ -60,13 +58,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         response.setContentType("application/json;charset=utf-8");
         String token = jwtService.generateToken(name);
         log.info("转换为token的用户name: "+jwtService.getUserNameFromToken(token));
-        //设置到cookie
-        //CookieUtils.setCookie(request,response,"authenticated",token,12000);
-        //将key存到cookie中  用户带着这个key 就能去缓存中找到用户信息
-        //随机字段
-        String uuid="daskdhH231";
-        CookieUtils.setCookie(request,response,"user",uuid);
-        redisUtils.set(uuid,token);
         //生成JWT
         //放入头文件
         responseUtils.responseToJson(response,objectMapper, ResponseResult.success(R.SUCCESS));

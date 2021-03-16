@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Redisson 工具类
  *
  * hasKey
  * expire     (String  自带过期时间)

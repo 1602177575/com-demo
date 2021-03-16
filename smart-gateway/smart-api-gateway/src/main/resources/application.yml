@@ -27,16 +27,8 @@ spring:
                 redis-rate-limiter.burstCapacity: 3
                 # 使用sqel 表达式按名称引用Bean
                 key-resolver: "#{@ipKeyResolver}"
-        - id: user-route2
-          uri: lb://user-server
-          #优先级 越小优先级越高
-          order: 0
-          # 断言 ，满足才会转发 用 =
-          predicates:
-            # 必须匹配路径
-            - Path=/user/test
 
   redis:
     port: 6379
-    host: 47.96.113.187
+    host: 127.0.0.1
     database: 3

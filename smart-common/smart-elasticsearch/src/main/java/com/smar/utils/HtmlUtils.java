@@ -17,17 +17,17 @@ import java.util.List;
  */
 public class HtmlUtils {
     public static void main(String[] args) throws IOException {
-        getJDHtml("java").forEach(System.out::println);
+        getJDHtml("java",2).forEach(System.out::println);
     }
 
     /**
-     * 获取京东搜也搜索数据
+     * 获取京东 搜索数据
      * @param keyword
      * @return
      * @throws IOException
      */
-    public static List<Content> getJDHtml(String keyword) throws IOException {
-        String url="https://search.jd.com/Search?keyword="+keyword;
+    public static List<Content> getJDHtml(String keyword,int pageNo) throws IOException {
+        String url="https://search.jd.com/Search?keyword="+keyword+"&page="+pageNo;
         ArrayList<Content> list = new ArrayList<>();
         Document document = Jsoup.parse(new URL(url),30000);
         //J_goodsList 包含所需原始的大的标签ID
