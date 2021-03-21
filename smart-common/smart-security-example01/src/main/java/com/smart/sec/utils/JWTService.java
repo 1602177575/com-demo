@@ -1,12 +1,18 @@
 package com.smart.sec.utils;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.smart.sec.pojo.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -29,8 +35,25 @@ public class JWTService {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
                 .compact();
-
     }
+
+    /**
+     * 用户信息生成Token
+     *
+     * @param user
+     * @return
+     */
+    public static String createToken(User user) {
+        //获取过期时间（一天后）
+        Date expireDate = getExpireDate();
+        String token = JWT.create()
+                .withAudience(user.getUserId().toString())
+                .withExpiresAt(expireDate)
+                .sign(Algorithm.HMAC256(user.getPassword()));
+        return token;
+    }
+
+
     // 从token中获取用户名
     public  String getUserNameFromToken(String token){
         return getTokenBody(token).getSubject();
@@ -47,5 +70,13 @@ public class JWTService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+    private static Date getExpireDate() {
+        LocalDate expireLocalDate = LocalDate.now().plusDays(1);
+        Instant instant = expireLocalDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        return Date.from(instant);
+    }
+
+
 
 }

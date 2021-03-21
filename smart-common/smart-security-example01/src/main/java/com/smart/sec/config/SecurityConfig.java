@@ -39,8 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     NoPermissionHandler noPermissionHandler;
     @Resource
-    UserDetailsService userDetailsService;
-    @Resource
     OnLogoutSuccessHandler onLogoutSuccessHandler;
 
 
@@ -114,9 +112,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 关闭跨域攻击
         http.csrf().disable();
         // 5. session的配置  如果需要只创建一个
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //6. 禁用缓存
-        http.headers().cacheControl().disable();
+        //http.headers().cacheControl().disable();
 
     }
 
@@ -130,15 +128,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //配置认证 密码一定要加密 new BCryptPasswordEncoder().encode("密码")
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .withUser("123")
-                .password(passwordEncoder().encode("123"))
-                .roles("USER");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(passwordEncoder())
+//                .withUser("123")
+//                .password(passwordEncoder().encode("123"))
+//                .roles("USER");
 
         //后续可以无限加 也可以从数据库中加载
         //配置认证方法
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
 
 

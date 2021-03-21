@@ -3,6 +3,7 @@ package com.smar.service;
 import com.alibaba.fastjson.JSON;
 import com.smar.pojo.Content;
 import com.smar.utils.HtmlUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -91,6 +92,7 @@ public class IndexService {
     }
 
 
+
     /**
      * 搜索关键字实现高亮
      * @param keyword
@@ -133,6 +135,7 @@ public class IndexService {
         ArrayList<Map<String, Object>> list = new ArrayList<>();
         for (SearchHit hit : search.getHits().getHits()) {
             list.add(hit.getSourceAsMap());
+            System.out.println(list.toString());
         }
         return list;
     }

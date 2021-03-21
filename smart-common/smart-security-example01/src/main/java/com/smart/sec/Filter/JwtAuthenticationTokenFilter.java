@@ -34,8 +34,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
-        log.info("过滤器");
         if(SecurityContextHolder.getContext().getAuthentication()!=null) {
+            log.info("过滤器");
             String requestURI = request.getRequestURI();
             String remoteAddr = request.getRemoteAddr();
             String method = request.getMethod();

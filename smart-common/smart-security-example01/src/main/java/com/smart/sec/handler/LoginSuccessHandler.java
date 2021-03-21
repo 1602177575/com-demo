@@ -1,6 +1,7 @@
 package com.smart.sec.handler;
 
 import cn.hutool.core.lang.UUID;
+import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smart.sec.Response.R;
 import com.smart.sec.Response.ResponseResult;
@@ -10,6 +11,7 @@ import com.smart.sec.utils.RedisUtils;
 import com.smart.sec.utils.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.jwt.Jwt;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -59,8 +61,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String token = jwtService.generateToken(name);
         log.info("转换为token的用户name: "+jwtService.getUserNameFromToken(token));
         //生成JWT
+
         //放入头文件
-        responseUtils.responseToJson(response,objectMapper, ResponseResult.success(R.SUCCESS));
+        response.setHeader("token",token);
+        responseUtils.responseToJson(response,objectMapper, ResponseResult.success(token));
 
     }
 }

@@ -18,6 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,7 +34,7 @@ import java.util.Set;
  */
 
 @Slf4j
-@Service
+@Component
 public class CustomerUserDetailsServiceImpl implements UserDetailsService {
 
     @Resource

@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 
 @SpringBootTest
@@ -17,7 +19,7 @@ class IndexServiceTest {
 
     @Test
     void addListener() throws IOException {
-        Boolean java = indexService.addListener("java");
+        List<Map<String, Object>> java = indexService.Highlight("java", 0, 100);
         System.out.println(java);
     }
 }
